@@ -1,9 +1,9 @@
-# Apolloachain - one new public chain, based on EOSIO code.
+# Apollochain - one new public chain, based on EOSIO code.
 The Most Powerful Infrastructure for Decentralized Applications.
 
-Welcome to the Apolloachain source code repository! This software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
+Welcome to the Apollochain source code repository! This software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
 
-Some of the groundbreaking features of Apolloachain include:
+Some of the groundbreaking features of Apollochain include:
 
 1. Free Rate Limited Transactions 
 1. Low Latency Block confirmation (0.5 seconds)
