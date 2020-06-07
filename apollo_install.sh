@@ -1,8 +1,6 @@
 #!/bin/bash
 ##########################################################################
 # This is the BESIO automated install script for Linux and Mac OS.
-# This file was downloaded from https://github.com/biteosorg/BitEOS
-#
 # Copyright (c) 2017, Respective Authors all rights reserved.
 #
 # After June 1, 2018 this software is available under the following terms:
@@ -27,7 +25,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
-# https://github.com/biteosorg/BitEOS/LICENSE.txt
 ##########################################################################
    
 
