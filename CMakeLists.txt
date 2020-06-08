@@ -1,12 +1,12 @@
 cmake_minimum_required( VERSION 3.5 )
 
-project( BESIO )
+project( APOLLOAC )
 
 enable_testing()
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/besio")
-   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/besio")
+   message(WARNING "CMAKE_INSTALL_PREFIX is set to default path of ${CMAKE_INSTALL_PREFIX}, resetting to ${CMAKE_INSTALL_PREFIX}/APOLLOAC")
+   set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/APOLLOAC")
 elseif ("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr/local")
    message(WARNING "CMAKE_INSTALL_PREFIX is explicitly set to /usr/local. This is not recommended.")
 endif()
@@ -20,7 +20,7 @@ include( SetupTargetMacros )
 include( InstallDirectoryPermissions )
 include( MASSigning )
 
-set( BLOCKCHAIN_NAME "BESIO" )
+set( BLOCKCHAIN_NAME "APOLLOAC" )
 set( CMAKE_CXX_STANDARD 14 )
 set( CMAKE_CXX_EXTENSIONS ON )
 set( CXX_STANDARD_REQUIRED ON)
@@ -32,7 +32,7 @@ set(VERSION_PATCH 3)
 set( CLI_CLIENT_EXECUTABLE_NAME clbes )
 set( NODE_EXECUTABLE_NAME nodbes )
 set( KEY_STORE_EXECUTABLE_NAME kbesd )
-set( GUI_CLIENT_EXECUTABLE_NAME besio )
+set( GUI_CLIENT_EXECUTABLE_NAME APOLLOAC )
 set( CUSTOM_URL_SCHEME "gcs" )
 set( INSTALLER_APP_ID "68ad7005-8eee-49c9-95ce-9eed97e5b347" )
 
@@ -111,7 +111,7 @@ FIND_PACKAGE(Boost 1.67 REQUIRED COMPONENTS
 
 if( WIN32 )
 
-    message( STATUS "Configuring BESIO on WIN32")
+    message( STATUS "Configuring APOLLOAC on WIN32")
     set( DB_VERSION 60 )
     set( BDB_STATIC_LIBS 1 )
 
@@ -146,11 +146,11 @@ else( WIN32 ) # Apple AND Linux
 
     if( APPLE )
         # Apple Specific Options Here
-        message( STATUS "Configuring BESIO on OS X" )
+        message( STATUS "Configuring APOLLOAC on OS X" )
         set( CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-deprecated-declarations" )
     else( APPLE )
         # Linux Specific Options Here
-        message( STATUS "Configuring BESIO on Linux" )
+        message( STATUS "Configuring APOLLOAC on Linux" )
         set( CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall" )
         if ( FULL_STATIC_BUILD )
           set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libstdc++ -static-libgcc")
@@ -179,7 +179,7 @@ else( WIN32 ) # Apple AND Linux
 
 endif( WIN32 )
 
-set(ENABLE_COVERAGE_TESTING FALSE CACHE BOOL "Build BESIO for code coverage analysis")
+set(ENABLE_COVERAGE_TESTING FALSE CACHE BOOL "Build APOLLOAC for code coverage analysis")
 
 if(ENABLE_COVERAGE_TESTING)
   SET(CMAKE_CXX_FLAGS "--coverage ${CMAKE_CXX_FLAGS}")
@@ -202,11 +202,11 @@ endif()
 
 message( STATUS "Using '${CORE_SYMBOL_NAME}' as CORE symbol name" )
 
-if ("${BESIO_ROOT_KEY}" STREQUAL "")
-   set(BESIO_ROOT_KEY "BES6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV")
+if ("${APOLLOAC_ROOT_KEY}" STREQUAL "")
+   set(APOLLOAC_ROOT_KEY "BES6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV")
 endif()
 
-message( STATUS "Using '${BESIO_ROOT_KEY}' as public key for 'besio' account" )
+message( STATUS "Using '${APOLLOAC_ROOT_KEY}' as public key for 'APOLLOAC' account" )
 
 include(wasm)
 
@@ -220,19 +220,19 @@ add_subdirectory( tests )
 add_subdirectory( tools )
 add_subdirectory( debian )
 
-install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/besio)
+install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/APOLLOAC)
 
-install(FILES testnet.template DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/besio/launcher)
-install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/besio)
-install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/besio/launcher)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/testnet.template ${CMAKE_CURRENT_BINARY_DIR}/etc/besio/launcher/testnet.template COPYONLY)
+install(FILES testnet.template DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/APOLLOAC/launcher)
+install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/APOLLOAC)
+install_directory_permissions(DIRECTORY ${CMAKE_INSTALL_FULL_SYSCONFDIR}/APOLLOAC/launcher)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/testnet.template ${CMAKE_CURRENT_BINARY_DIR}/etc/APOLLOAC/launcher/testnet.template COPYONLY)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/besio.version.in ${CMAKE_CURRENT_BINARY_DIR}/besio.version.hpp)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/besio.version.hpp DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/APOLLOAC.version.in ${CMAKE_CURRENT_BINARY_DIR}/APOLLOAC.version.hpp)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/APOLLOAC.version.hpp DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/BesioTester.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/BesioTester.cmake @ONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/BesioTesterBuild.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/BesioTester.cmake @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BesioTester.cmake DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/APOLLOACTester.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/APOLLOACTester.cmake @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/APOLLOACTesterBuild.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/APOLLOACTester.cmake @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/APOLLOACTester.cmake DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/)
 
 include(installer)
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 ##########################################################################
-# This is the BESIO automated install script for Linux and Mac OS.
+# This is the apollo automated install script for Linux and Mac OS.
 # Copyright (c) 2017, Respective Authors all rights reserved.
 #
 # After June 1, 2018 this software is available under the following terms:
@@ -51,7 +51,7 @@
    }
 
    install_symlinks() {
-      printf "\\n\\tInstalling BESIO Binary Symlinks\\n\\n"
+      printf "\\n\\tInstalling apollo Binary Symlinks\\n\\n"
       create_symlink "clbes"
       create_symlink "besio-abigen"
       create_symlink "besio-launcher"
@@ -81,7 +81,7 @@
    
    if ! make install
    then
-      printf "\\n\\t>>>>>>>>>>>>>>>>>>>> MAKE installing BESIO has exited with the above error.\\n\\n"
+      printf "\\n\\t>>>>>>>>>>>>>>>>>>>> MAKE installing apollo has exited with the above error.\\n\\n"
       exit -1
    fi
    popd &> /dev/null 
